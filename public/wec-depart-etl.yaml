@@ -1,0 +1,1727 @@
+swagger: '2.0'
+info:
+  title: Devops ETL API
+  description: 文档中下拉选项  是--1  否--0 
+  version: "1.0.0"
+
+host: res.wisedu.com:8000
+schemes:
+  - http
+basePath: /wec-devops-etl
+
+paths:
+  /etlTaskSchool/queryEtlTasksBySchoolId:
+    post:
+      summary: 同步任务管理
+      description: 获取同步任务(校端)
+      operationId: "queryEtlTasksBySchoolId"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: "etlTaskSchoolQueryRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlTaskSchoolQueryRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/etlTaskSchoolQueryResponse"
+            
+            
+  /etlTaskSchool/queryEtlTasksByWid:
+    post:
+      summary: 同步任务管理
+      description: 获取同步任务信息根据wid(校端)
+      operationId: "queryEtlTasksByWid"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: "etlTaskOneRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlTaskOneRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/etlTaskSchoolInfo"
+   
+  /etlTaskSchool/addOrUpdateSchoolEtlTask:
+    post:
+      summary: 同步任务管理
+      description: 增加或修改同步任务
+      operationId: "addOrUpdateSchoolEtlTask"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlTaskSchoolInfo"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlTaskSchoolInfo"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+           
+  /etlTaskSchool/deleteEtlTaskSchool:
+    post:
+      summary: 同步任务管理
+      description: 删除同步任务
+      operationId: "deleteEtlTaskSchool"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlDeleteRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlDeleteRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+    
+  /etlTaskSchool/startTask:
+    post:
+      summary: 同步任务管理
+      description: 启动任务
+      operationId: "startTask"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "taskSchoolRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/taskSchoolRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+            
+            
+  /etlTaskSchool/stopTask:
+    post:
+      summary: 同步任务管理
+      description: 启动任务
+      operationId: "stopTask"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "taskSchoolRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/taskSchoolRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+
+  /etlTask/queryEtlTasks:
+    post:
+      summary: 同步任务管理
+      description: 获取同步任务
+      operationId: "queryEtlTasks"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: "etlTaskQueryRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlTaskQueryRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/etlTaskQueryResponse"
+
+  /etlTask/addOrUpdateEtlTask:
+    post:
+      summary: 同步任务管理
+      description: 增加或修改同步任务
+      operationId: "addOrUpdateEtlTask"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlTaskInfo"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlTaskInfo"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+           
+  /etlTask/deleteEtlTask:
+    post:
+      summary: 同步任务管理
+      description: 删除同步任务
+      operationId: "deleteEtlTask"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlDeleteRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlDeleteRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+
+  /etlTask/downloadTask:
+    post:
+      summary: 同步任务管理
+      description:  下载同步任务
+      operationId: "downloadTask"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlDownRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlDownRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+
+  /etlTask/pollFileStatus:
+    post:
+      summary: 用户
+      description: 拉取文件状态
+      operationId: "pollFileStatus"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - name: "fileStatusRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/fileStatusRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/fileStatusResponse"
+            
+  /etlTask/getGeneratedTaskFile:
+    get:
+      summary: 同步任务管理
+      description:  下载已生成的同步任务
+      operationId: "getGeneratedTaskFile"
+      parameters:
+        - name: schoolId
+          description: 租户id
+          in: query
+          required: false
+          type: string
+      responses:
+        200:
+          description: "文件流"
+          schema:
+            type: string
+            format: byte
+            
+  /etlTask/pushTask:
+    post:
+      summary: 同步任务管理
+      description:  推送同步任务
+      operationId: "pushTask"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlDownRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlDownRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+            
+  /etlTask/getTransSql:
+    post:
+      summary: 同步任务管理
+      description:  获取SQL
+      operationId: "getTransSql"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlTransSqlRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlTransSqlRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/etlTransSqlResponse"
+            
+  /etlDatasource/queryEtlDataSources:
+    post:
+      summary: 数据源管理
+      description: 获取数据源
+      operationId: "queryEtlDataSources"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: "etlDataSourceQueryRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlDataSourceQueryRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/etlDataSourceQueryResponse"
+            
+            
+            
+  /etlDatasource/queryEtlDataSourcesBySchoolId:
+    post:
+      summary: 数据源管理
+      description: 获取数据源
+      operationId: "queryEtlDataSourcesBySchoolId"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: "etlDataSourceSchoolQueryRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlDataSourceSchoolQueryRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/etlDataSourceQueryResponse"
+
+  /etlDatasource/addOrUpdateEtlDataSource:
+    post:
+      summary: 数据源管理
+      description: 增加或修改数据源
+      operationId: "addOrUpdateEtlDataSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlDataSourceInfo"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlDataSourceInfo"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+            
+  /etlDatasource/checkEtlDataSource:
+    post:
+      summary: 数据源管理
+      description: 测试数据源连接
+      operationId: "checkEtlDataSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlDataSourceInfo"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlDataSourceInfo"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+            
+  /etlDatasource/deleteEtlDataSource:
+    post:
+      summary: 数据源管理
+      description: 删除数据源
+      operationId: "deleteEtlDataSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "etlDeleteRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/etlDeleteRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+            
+  /select/dbType:
+    post:
+      summary: 下拉
+      description: 获取数据库类型    
+      operationId: "getDbType"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+            
+  /select/pkType:
+    post:
+      summary: 下拉
+      description: 获取主键类别    
+      operationId: "getPkType"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+
+  /select/etlTableName:
+    post:
+      summary: 下拉
+      description: 获取元数据表名字    
+      operationId: "getEtlTableName"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: codeWithSchoolIdRequest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/codeWithSchoolIdRequest'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+
+  /select/etlSchoolCompareDS:
+    post:
+      summary: 下拉
+      description: 获取私有云标准库   
+      operationId: "getEetlSchoolCompareDS"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: codeWithSchoolIdRequest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/codeWithSchoolIdRequest'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+
+  /select/etlSchoolBusinessDS:
+    post:
+      summary: 下拉
+      description: 获取私有云业务库    
+      operationId: "getEtlSchoolBusinessDS"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: codeWithSchoolIdRequest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/codeWithSchoolIdRequest'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+            
+  /select/etlCloudCompareDS:
+    post:
+      summary: 下拉
+      description: 获取公有云标准库    
+      operationId: "getEtlCloudCompareDS"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: codeWithSchoolIdRequest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/codeWithSchoolIdRequest'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+
+  /select/etlCloudBusinessDS:
+    post:
+      summary: 下拉
+      description: 获取公有云业务库    
+      operationId: "getEtlCloudBusinessDS"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: codeWithSchoolIdRequest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/codeWithSchoolIdRequest'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+            
+  /select/etlDataSourceType:
+    post:
+      summary: 下拉
+      description: 获取数据源类型    
+      operationId: "getEtlDataSourceType"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: codeRequest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/codeRequest'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+          
+  /select/etlTableByDataSource:
+    post:
+      summary: 下拉
+      description: 通过数据源获取元数据表
+      operationId: "getEtlTableByDataSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: etlTableByDataSourceRequest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/etlTableByDataSourceRequest'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+            
+  /select/etlCheckJdbcConnction:
+    post:
+      summary: 下拉
+      description: 测试连接
+      operationId: "etlCheckJdbcConnction"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: etlTableByDataSourceRequest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/etlTableByDataSourceRequest'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+   
+  /etlDatasource/queryExtendEtlDataSources:
+    post:
+      summary: 数据源管理
+      description: 获取数据源(改造)
+      operationId: "queryExtendEtlDataSources"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: "EtlDataSourceQueryExtendRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/EtlDataSourceQueryExtendRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/etlDataSourceQueryResponse"
+
+  /etlFieldExtend/updateEtlTableFieldSort:
+    post:
+      summary: 数据源管理
+      description: 上移下移
+      operationId: "updateEtlTableFieldSort"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - fe-req-form
+      parameters:
+        - name: "EtlFieldSortRequest"
+          in: "body"
+          required: true
+          description: "请求"
+          schema:
+            $ref: "#/definitions/EtlFieldSortRequest"
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/baseResponse"
+                     
+  /select/tenantBusType:
+    post:
+      summary: 下拉
+      description: 获取租户分类属性   
+      operationId: "tenantBusType"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+            
+  /select/dbTypeExtend:
+    post:
+      summary: 下拉
+      description: 获取数据库类型(改造)   
+      operationId: "dbTypeExtend"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+
+  /select/dbTypeByDataSource:
+    post:
+      summary: 下拉
+      description: 通过数据源获取数据库类型    
+      operationId: "dbTypeByDataSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      parameters:
+        - name: EtlTableByDataSourceRequest
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/EtlTableByDataSourceRequest'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+
+  /select/etlDataSourceTypeExtend:
+    post:
+      summary: 下拉
+      description: 获取数据源类型(改造)  
+      operationId: "etlDataSourceTypeExtend"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      tags:
+        - ""
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: "#/definitions/codeResponse"
+
+definitions:
+  etlTaskSchoolQueryRequest:
+    type: "object"
+    properties:
+      schoolId:
+        type: "string"
+        description: 租户id
+      type:
+        type: "string"
+        description: 1代表上行2代表下行
+      pageNumber:
+        type: "integer"
+        description: "分页页码"
+      pageSize:
+        type: "integer"
+        description: "分页大小"
+        
+        
+  etlTaskSchoolQueryResponse:
+    type: object
+    properties:
+      code:
+        x-chance-type: fixed
+        x-type-value: 0
+        type: "string"
+        description: "操作状态码（0：成功， 其他 ：失败）"
+      datas:
+        type: object
+        properties:
+          totalSize:
+            type: integer
+            description: 记录总数.
+          pageSize:
+            type: integer
+            description: 分页大小.
+          pageNumber:
+            type: integer
+            description: 分页页码.
+          rows:
+            type: array
+            items:
+              $ref: '#/definitions/queryEtlTaskSchoolInfo'
+      message:
+        type: string
+        description: 返回消息，一般用于发生异常时定位问题.
+        
+  queryEtlTaskSchoolInfo:
+    type: object
+    properties:
+      wid:
+        type: "string"
+        title: "hidden:true"
+      name:
+        type: string
+        title: "required:true,dataSize:90"
+        description: "任务名称"
+      tableWid:
+        type: string
+        title: "hidden:true"
+        description: "元数据表wid"
+      tableName:
+        type: string
+        title: "required:true,dataSize:90"
+        description: "元数据表名称"
+      grjyTime:
+        type: string
+        title: "required:fales,dataSize:90"
+        description: "个人交易时间"
+      compareTable:
+        type: string
+        title: "required:false,dataSize:90"
+        description: "对比表名称"
+      syncDirection:
+        type: string
+        title: "required:true"
+        description: "同步任务方向"
+      schoolId:
+        type: string
+        title: "hidden:true"
+        description: "学校id"
+      schoolName:
+        type: string
+        title: "hidden:true"
+        description: "学校名称"
+      schoolCompareDatesource:
+        type: string
+        title: "required:true"
+        description: "私有云标准库"
+      schoolBusinessDatasource:
+        type: string
+        title: "required:false"
+        description: "私有云业务库"
+      cloudCompareDatasource:
+        type: string
+        title: "required:false"
+        description: "公有云标准库"
+      cloudBusinessDatasource:
+        type: string
+        title: "required:false"
+        description: "公有云业务库"
+      schoolCompareDatesourceId:
+        type: string
+        title: "hidden:true"
+        description: "私有云标准库id"
+      schoolBusinessDatasourceId:
+        type: string
+        title: "hidden:true"
+        description: "私有云业务库id"
+      cloudCompareDatasourceId:
+        type: string
+        title: "hidden:true"
+        description: "公有云标准库id"
+      cloudBusinessDatasourceId:
+        type: string
+        title: "hidden:true"
+        description: "公有云业务库id"
+      schoolSql:
+        type: string
+        description: "转换SQL"
+      schoolScheduleRepeat:
+        type: integer
+        title: "required:false"
+        description: "私有云重复调度"
+      schoolScheduleType:
+        type: string
+        title: "required:false"
+        description: "私有云调度类型"
+      schoolScheduleDayInMonth:
+        type: string
+        title: "required:false"
+        description: "私有云调度日期"
+      schoolScheduleWeek:
+        type: string
+        title: "required:false"
+        description: "私有云调度星期"
+      schoolScheduleHour:
+        type: string
+        title: "required:false"
+        description: "私有云调度小时"
+      schoolScheduleMinute:
+        type: string
+        title: "required:false"
+        description: "私有云调度分钟"
+      schoolScheduleSecond:
+        type: string
+        title: "required:false"
+        description: "私有云调度秒"
+      cloudScheduleRepeat:
+        type: integer
+        title: "required:false"
+        description: "公有云重复调度"
+      cloudScheduleType:
+        type: string
+        title: "required:false"
+        description: "公有云调度类型"
+      cloudScheduleDayInMonth:
+        type: string
+        title: "required:false"
+        description: "公有云调度日期"
+      cloudScheduleWeek:
+        type: string
+        title: "required:false"
+        description: "公有云调度星期"
+      cloudScheduleHour:
+        type: string
+        title: "required:false"
+        description: "公有云调度小时"
+      cloudScheduleMinute:
+        type: string
+        title: "required:false"
+        description: "公有云调度分钟"
+      cloudScheduleSecond:
+        type: string
+        title: "required:false"
+        description: "公有云调度秒"
+        
+      schoolPolicyType:
+        type: string
+        title: "required:false"
+        description: "私有云执行策略(1按小时定时执行2按天定时执行3按周定时执行)"
+      schoolPolicyHuor:
+        type: string
+        title: "required:false"
+        description: "私有云按小时执行"
+      schoolPolicyDay:
+        type: string
+        title: "required:false"
+        description: "私有云按天执行"
+      schoolPolicyWeek:
+        type: string
+        title: "required:false"
+        description: "私有云按周定时执行(周数据集合)"
+      schoolPolicyWeekDay:
+        type: string
+        title: "required:false"
+        description: "私有云按周定时执行(时间数据)"
+        
+        
+      cloudPolicyType:
+        type: string
+        title: "required:false"
+        description: "公有云执行策略(1按小时定时执行2按天定时执行3按周定时执行)"
+      cloudPolicyHuor:
+        type: string
+        title: "required:false"
+        description: "公有云按小时执行"
+      cloudPolicyDay:
+        type: string
+        title: "required:false"
+        description: "公有云按天执行"
+      cloudPolicyWeek:
+        type: string
+        title: "required:false"
+        description: "公有云按周定时执行(周数据集合)"
+      cloudPolicyWeekDay:
+        type: string
+        title: "required:false"
+        description: "公有云按周定时执行(时间数据)"
+      sourceTable:
+        type: string
+        title: "required:false"
+        description: "源头表"
+      taskStatus:
+        type: integer
+        title: "required:false"
+        description: "任务状态"
+      tableNameDesc:
+        type: string
+        title: "required:true"
+        description: "元数据表名称拼接"
+        
+  etlTaskSchoolInfo:
+    type: object
+    properties:
+      wid:
+        type: "string"
+        title: "hidden:true"
+      name:
+        type: string
+        title: "required:true,dataSize:90"
+        description: "任务名称"
+      tableWid:
+        type: string
+        title: "hidden:true"
+        description: "元数据表wid"
+      tableName:
+        type: string
+        title: "required:true,dataSize:90"
+        description: "元数据表名称"
+      grjyTime:
+        type: string
+        title: "required:fales,dataSize:90"
+        description: "个人交易时间"
+      compareTable:
+        type: string
+        title: "required:false,dataSize:90"
+        description: "对比表名称"
+      syncDirection:
+        type: string
+        title: "required:true"
+        description: "同步任务方向"
+      schoolId:
+        type: string
+        title: "hidden:true"
+        description: "学校id"
+      schoolName:
+        type: string
+        title: "hidden:true"
+        description: "学校名称"
+      schoolCompareDatesource:
+        type: string
+        title: "required:true"
+        description: "私有云标准库"
+      schoolBusinessDatasource:
+        type: string
+        title: "required:false"
+        description: "私有云业务库"
+      cloudCompareDatasource:
+        type: string
+        title: "required:false"
+        description: "公有云标准库"
+      cloudBusinessDatasource:
+        type: string
+        title: "required:false"
+        description: "公有云业务库"
+      schoolCompareDatesourceId:
+        type: string
+        title: "hidden:true"
+        description: "私有云标准库id"
+      schoolBusinessDatasourceId:
+        type: string
+        title: "hidden:true"
+        description: "私有云业务库id"
+      cloudCompareDatasourceId:
+        type: string
+        title: "hidden:true"
+        description: "公有云标准库id"
+      cloudBusinessDatasourceId:
+        type: string
+        title: "hidden:true"
+        description: "公有云业务库id"
+      schoolSql:
+        type: string
+        description: "转换SQL"
+      schoolScheduleRepeat:
+        type: integer
+        title: "required:false"
+        description: "私有云重复调度"
+      schoolScheduleType:
+        type: string
+        title: "required:false"
+        description: "私有云调度类型"
+      schoolScheduleDayInMonth:
+        type: string
+        title: "required:false"
+        description: "私有云调度日期"
+      schoolScheduleWeek:
+        type: string
+        title: "required:false"
+        description: "私有云调度星期"
+      schoolScheduleHour:
+        type: string
+        title: "required:false"
+        description: "私有云调度小时"
+      schoolScheduleMinute:
+        type: string
+        title: "required:false"
+        description: "私有云调度分钟"
+      schoolScheduleSecond:
+        type: string
+        title: "required:false"
+        description: "私有云调度秒"
+      cloudScheduleRepeat:
+        type: integer
+        title: "required:false"
+        description: "公有云重复调度"
+      cloudScheduleType:
+        type: string
+        title: "required:false"
+        description: "公有云调度类型"
+      cloudScheduleDayInMonth:
+        type: string
+        title: "required:false"
+        description: "公有云调度日期"
+      cloudScheduleWeek:
+        type: string
+        title: "required:false"
+        description: "公有云调度星期"
+      cloudScheduleHour:
+        type: string
+        title: "required:false"
+        description: "公有云调度小时"
+      cloudScheduleMinute:
+        type: string
+        title: "required:false"
+        description: "公有云调度分钟"
+      cloudScheduleSecond:
+        type: string
+        title: "required:false"
+        description: "公有云调度秒"
+        
+      school_policy_type:
+        type: string
+        title: "required:false"
+        description: "私有云执行策略(1按小时定时执行2按天定时执行3按周定时执行)"
+      school_policy_huor:
+        type: string
+        title: "required:false"
+        description: "私有云按小时执行"
+      school_policy_day:
+        type: string
+        title: "required:false"
+        description: "私有云按天执行"
+      school_policy_week:
+        type: string
+        title: "required:false"
+        description: "私有云按周定时执行(周数据集合)"
+      school_policy_week_day:
+        type: string
+        title: "required:false"
+        description: "私有云按周定时执行(时间数据)"
+        
+        
+      cloud_policy_type:
+        type: string
+        title: "required:false"
+        description: "公有云执行策略(1按小时定时执行2按天定时执行3按周定时执行)"
+      cloud_policy_huor:
+        type: string
+        title: "required:false"
+        description: "公有云按小时执行"
+      cloud_policy_day:
+        type: string
+        title: "required:false"
+        description: "公有云按天执行"
+      cloud_policy_week:
+        type: string
+        title: "required:false"
+        description: "公有云按周定时执行(周数据集合)"
+      cloud_policy_week_day:
+        type: string
+        title: "required:false"
+        description: "公有云按周定时执行(时间数据)"
+      source_table:
+        type: string
+        title: "required:false"
+        description: "源头表"
+
+  EtlFieldSortRequest:
+    type: "object"
+    properties:
+      oneWid:
+        type: "integer"
+      oneSort:
+        type: "integer"
+      twoWid:
+        type: "integer"
+      twoSort:
+        type: "integer"
+      
+  
+  EtlTableByDataSourceRequest:
+    type: "object"
+    properties:
+        content:
+          description: "查询内容"
+          type: "string"
+        dataSourceId:
+          description: "数据源Id"
+          type: "string"
+        pageNumber:
+          type: "integer"
+        pageSize:
+          type: "integer"
+    
+  etlDataSourceSchoolQueryRequest:
+    type: "object"
+    properties:
+      schoolId:
+        type: "integer"
+        description: "租户id"
+      pageNumber:
+        type: "integer"
+        description: "分页页码"
+      pageSize:
+        type: "integer"
+        description: "分页大小"
+  EtlDataSourceQueryExtendRequest:
+    type: "object"
+    properties:
+      searchContent:
+        type: "string"
+        description: "查询内容"
+      dbType:
+        type: "string"
+        description: "数据库类型"
+      pageNumber:
+        type: "integer"
+        description: "分页页码"
+      pageSize:
+        type: "integer"
+        description: "分页大小"
+  
+  etlDownRequest:
+    type: "object"
+    properties:
+      schoolId:
+        type: "string"
+
+  etlTaskQueryRequest:
+    type: "object"
+    properties:
+      schoolId:
+        type: "string"
+        description: 租户id
+      name:
+        type: "string"
+        description: 任务名称
+      syncDirection:
+        type: string
+        description: "同步任务方向"
+      pageNumber:
+        type: "integer"
+        description: "分页页码"
+      pageSize:
+        type: "integer"
+        description: "分页大小"
+        
+  etlTaskQueryResponse:
+    type: object
+    properties:
+      code:
+        x-chance-type: fixed
+        x-type-value: 0
+        type: "string"
+        description: "操作状态码（0：成功， 其他 ：失败）"
+      datas:
+        type: object
+        properties:
+          totalSize:
+            type: integer
+            description: 记录总数.
+          pageSize:
+            type: integer
+            description: 分页大小.
+          pageNumber:
+            type: integer
+            description: 分页页码.
+          rows:
+            type: array
+            items:
+              $ref: '#/definitions/etlTaskInfo'
+      message:
+        type: string
+        description: 返回消息，一般用于发生异常时定位问题.
+        
+  etlTaskInfo:
+    type: object
+    properties:
+      wid:
+        type: "string"
+        title: "hidden:true"
+      name:
+        type: string
+        title: "required:true,dataSize:90"
+        description: "任务名称"
+      tableWid:
+        type: string
+        title: "hidden:true"
+        description: "元数据表wid"
+      tableName:
+        type: string
+        title: "required:true,dataSize:90"
+        description: "元数据表名称"
+      grjyTime:
+        type: string
+        title: "required:fales,dataSize:90"
+        description: "个人交易时间"
+      compareTable:
+        type: string
+        title: "required:false,dataSize:90"
+        description: "对比表名称"
+      syncDirection:
+        type: string
+        title: "required:true"
+        description: "同步任务方向"
+      schoolId:
+        type: string
+        title: "hidden:true"
+        description: "学校id"
+      schoolName:
+        type: string
+        title: "hidden:true"
+        description: "学校名称"
+      schoolCompareDatesource:
+        type: string
+        title: "required:true"
+        description: "私有云标准库"
+      schoolBusinessDatasource:
+        type: string
+        title: "required:false"
+        description: "私有云业务库"
+      cloudCompareDatasource:
+        type: string
+        title: "required:false"
+        description: "公有云标准库"
+      cloudBusinessDatasource:
+        type: string
+        title: "required:false"
+        description: "公有云业务库"
+      schoolCompareDatesourceId:
+        type: string
+        title: "hidden:true"
+        description: "私有云标准库id"
+      schoolBusinessDatasourceId:
+        type: string
+        title: "hidden:true"
+        description: "私有云业务库id"
+      cloudCompareDatasourceId:
+        type: string
+        title: "hidden:true"
+        description: "公有云标准库id"
+      cloudBusinessDatasourceId:
+        type: string
+        title: "hidden:true"
+        description: "公有云业务库id"
+      schoolSql:
+        type: string
+        description: "转换SQL"
+      schoolScheduleRepeat:
+        type: integer
+        title: "required:false"
+        description: "私有云重复调度"
+      schoolScheduleType:
+        type: string
+        title: "required:false"
+        description: "私有云调度类型"
+      schoolScheduleDayInMonth:
+        type: string
+        title: "required:false"
+        description: "私有云调度日期"
+      schoolScheduleWeek:
+        type: string
+        title: "required:false"
+        description: "私有云调度星期"
+      schoolScheduleHour:
+        type: string
+        title: "required:false"
+        description: "私有云调度小时"
+      schoolScheduleMinute:
+        type: string
+        title: "required:false"
+        description: "私有云调度分钟"
+      schoolScheduleSecond:
+        type: string
+        title: "required:false"
+        description: "私有云调度秒"
+      cloudScheduleRepeat:
+        type: integer
+        title: "required:false"
+        description: "公有云重复调度"
+      cloudScheduleType:
+        type: string
+        title: "required:false"
+        description: "公有云调度类型"
+      cloudScheduleDayInMonth:
+        type: string
+        title: "required:false"
+        description: "公有云调度日期"
+      cloudScheduleWeek:
+        type: string
+        title: "required:false"
+        description: "公有云调度星期"
+      cloudScheduleHour:
+        type: string
+        title: "required:false"
+        description: "公有云调度小时"
+      cloudScheduleMinute:
+        type: string
+        title: "required:false"
+        description: "公有云调度分钟"
+      cloudScheduleSecond:
+        type: string
+        title: "required:false"
+        description: "公有云调度秒"
+        
+  fileStatusRequest:
+    type: object
+    properties:
+      schoolId:
+        type: "string"
+        description: 租户id     
+
+  fileStatusResponse:
+    type: object
+    properties:
+      code:
+        x-chance-type: fixed
+        x-type-value: 0
+        type: "string"
+        description: "操作状态码（0：成功， 其他 ：失败）"
+      datas:
+        type: object
+        properties:
+          status:
+            type: integer
+            description: 操作状态 0.文件未生成 1.文件已生成
+      message:
+        type: string
+        description: 返回消息，一般用于发生异常时定位问题.
+    
+  etlDataSourceQueryRequest:
+    type: "object"
+    properties:
+      dataSourceName:
+        type: "string"
+        description: "数据源名称"
+      hostName:
+        type: "string"
+        description: "主机名称"
+      serverName:
+        type: "string"
+        description: "数据库名称"
+      category:
+        type: "string"
+        description: "数据源类型"
+      dbType:
+        type: "string"
+        description: "数据库类型"
+      isMultTenant:
+        type: "integer"
+        description: "是否支持多租户"
+      schoolName:
+        type: "string"
+        description: "租户"
+      pageNumber:
+        type: "integer"
+        description: "分页页码"
+      pageSize:
+        type: "integer"
+        description: "分页大小"
+        
+  etlDataSourceQueryResponse:
+    type: object
+    properties:
+      code:
+        x-chance-type: fixed
+        x-type-value: 0
+        type: "string"
+        description: "操作状态码（0：成功， 其他 ：失败）"
+      datas:
+        type: object
+        properties:
+          totalSize:
+            type: integer
+            description: 记录总数.
+          pageSize:
+            type: integer
+            description: 分页大小.
+          pageNumber:
+            type: integer
+            description: 分页页码.
+          rows:
+            type: array
+            items:
+              $ref: '#/definitions/etlDataSourceInfo'
+      message:
+        type: string
+        description: 返回消息，一般用于发生异常时定位问题.
+        
+  etlDataSourceInfo:
+    type: object
+    properties:
+      wid:
+        type: "string"
+        title: "hidden:true"
+      name:
+        type: string
+        title: "required:true,dataSize:90"
+        description: "数据源名称"
+      category:
+        type: string
+        title: "required:true"
+        description: "数据源类型"
+      isMultTenant:
+        type: integer
+        title: "required:true"
+        description: "是否支持多租户"
+      schoolId:
+        type: string
+        title: "hidden:true"
+        description: "学校id"
+      schoolName:
+        type: string
+        title: "required:false"
+        description: "学校名称"
+      dbType:
+        type: string
+        title: "required:true"
+        description: "数据库类型"
+      hostName:
+        type: string
+        title: "required:true"
+        description: "主机名称"
+      serverName:
+        type: string
+        title: "required:true"
+        description: "数据库名称"
+      schemaName:
+        type: string
+        title: "required:false"
+        description: "数据库schema"
+      userName:
+        type: string
+        title: "required:true"
+        description: "用户名"
+      password:
+        type: string
+        description: "密码"
+      port:
+        type: string
+        title: "required:true"
+        description: "端口"
+
+  etlDeleteRequest:
+    type: "object"
+    properties:
+      wids:
+        type: array
+        items:
+          type: string
+  
+  etlTransSqlRequest:
+    type: object
+    properties:
+      schoolId:
+        type: "string"
+        description: 租户id
+      tableName:
+        type: "string"
+        description: 表名
+      tableWid:
+        type: string
+        description: "表id"
+        
+  etlTransSqlResponse:
+    type: object
+    properties:
+      code:
+        x-chance-type: fixed
+        x-type-value: 0
+        type: "string"
+        description: "操作状态码（0：成功，其他：失败）"
+      datas:
+        type: "string"
+        description: "SQL"
+      message:
+        type: "string"
+        description: "请求失败相关信息"  
+  
+  baseResponse:
+    type: object
+    properties:
+      code:
+        x-chance-type: fixed
+        x-type-value: 0
+        type: "string"
+        description: "操作状态码（0：成功，其他：失败）"
+      message:
+        type: "string"
+        description: "请求失败相关信息"
+   
+  etlTableByDataSourceRequest:
+    type: "object"
+    properties:
+        content:
+          description: "查询内容"
+          type: "string"
+        dataSourceId:
+          description: "数据源Id"
+          type: "string"
+        pageNumber:
+          type: "integer"
+        pageSize:
+          type: "integer"
+
+  codeWithSchoolIdRequest:
+    type: "object"
+    properties:
+        content:
+          description: "查询内容"
+          type: "string"
+        schoolId:
+          description: "租户Id"
+          type: "string"
+        pageNumber:
+          type: "integer"
+        pageSize:
+          type: "integer"    
+
+  etlTaskOneRequest:
+    type: "object"
+    properties:
+      wid:
+         type: "string"  
+  taskSchoolRequest:
+    type: "object"
+    properties:
+      schoolId:
+        type: "string"
+        description: 租户id
+      type:
+        type: "string"
+        description: 1代表上行2代表下行
+      taskWid:
+        type: "string"
+        description: 任务wid
+
+  codeRequest:
+    type: "object"
+    properties:
+        content:
+          description: "查询内容"
+          type: "string"
+        pageNumber:
+          type: "integer"
+        pageSize:
+          type: "integer"
+  
+  codeResponse:
+    type: "object"
+    properties:
+      code:
+        type: "string"
+        description: "操作状态码（0：成功，其他：失败）"
+        pattern: "^(0)$"
+      message:
+        type: "string"
+        description: "请求失败相关信息"
+      datas:
+        type: "object"
+        properties:
+          totalSize:
+            type: integer
+            description: 记录总数.
+          pageSize:
+            type: integer
+            description: 分页大小.
+          pageNumber:
+            type: integer
+            description: 分页页码.
+          rows:
+            type: "array"
+            description: ""
+            items:
+              type: "object"
+              properties:
+                id:
+                  type: "string"
+                name:
+                  type: "string"
+                chinaName:
+                  type: "string"
